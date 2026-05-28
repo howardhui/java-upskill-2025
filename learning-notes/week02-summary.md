@@ -78,5 +78,24 @@ var employees = new ArrayList<Employee>();
 ## This Week's Biggest Takeaway
 **Tell, Don’t Ask** principle: *tell objects what to do* rather than *asking them for data and acting on it* outside of the object. Always moving behaviour into objects alongside their data, keeping logic and state together.
 
+## Saturday Self-Test Results
+
+### Score for Each Question (1–10)
+- Question 1 (BiFunction / Lambda): 9/10
+- Question 2 (Stream Integration): 9/10
+- Question 3 (Records + Sealed Classes): 7/10
+- Question 4 (Switch + Text Blocks): 8/10
+- Question 5 (Integrated Design): 6/10
+- **Average Score: 7.8**
+
+### Overall AI Assessment
+**Ready for Week 3 Spring Boot?** Yes, clearly understand and demonstrated Java fundamentals that consists of streams, records, sealed types, switch expressions, optionals, and functional interfaces.
+
+### Areas for Improvement on Sunday
+**What to strengthen next?** Focus on data modeling consistency (like Q3), edge cases (duplicate keys in toMap, null/invalid inputs), and producing precise outputs (text block whitespace, formatting). Also practice “domain objects + services” separation—this maps directly to Spring Boot layering.
+
+### Confidence Level Before Week 3
+7 / 10
+
 ## Next Week's Plan
 Week 3: The basic of Spring Boot 3.x — REST API
