@@ -86,18 +86,23 @@ I have 10+ years of Java development experience and 8+ years of IT Project Manag
 
 ***
 
-### Week 2 ([Date]) — Deepening Modern Features of Java 17/21
+### Week 2 ([Date range]) — Java 17/21 Modern Features
 
 **Completed Content:**
-- ✅ Text Blocks: JSON / SQL / HTML templates, using `.formatted()`
+- ✅ Text Blocks: JSON / SQL / HTML templates with `.formatted()`
 - ✅ Records: DTO design pattern, compact constructor validation
-- ✅ Sealed Classes: IT Ticket state flow type safety model
-- ✅ Advanced Stream Collectors: `groupingBy` / `partitioningBy` / `toMap`
-- ✅ Switch Expressions: Complete evolution of Java 14–21, Guarded Patterns
-- ✅ Comprehensive refactoring of Java 8→21: Six refactoring points of LegacyHRSystem
+- ✅ Sealed Classes: IT Ticket state machine with type-safe model
+- ✅ Stream Collectors (advanced): `groupingBy` / `partitioningBy` / `toMap`
+- ✅ Switch Expressions: full Java 14–21 evolution, Guarded Patterns
+- ✅ Java 8→21 comprehensive refactoring (LegacyHRSystem → Week2Friday): Six refactoring points of LegacyHRSystem
+- ✅ Amigoscode: Functional Programming Full Course (Lambda, Streams,
+     Method References, Combinator Pattern, Callbacks)
+- ✅ Independent self-assessment: 5-question test without AI assistance
+- ✅ Java 8→21 Refactoring Checklist created (permanent reference)
 
 **This Week's Highlight:**
 Tell, Don’t Ask principle: can implement with enum or sealed class
 
 **Next Week's Plan:**
-Week 3: The basic of Spring Boot 3.x — REST API
+Week 3: Spring Boot 3.x — Building REST APIs
+

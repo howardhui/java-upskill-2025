@@ -59,6 +59,20 @@ public class VideoNotes {
 
         System.out.println(result);
 
+        // another example
+        var validCustomer = new Customer2("Alice", "alice@email.com",
+                "+447911123456", 30);
+        var invalidCustomer = new Customer2("Bob", "bob-no-at-sign",
+                "07911123456", 15);
+
+        // Chain validators using .and()
+        CustomerValidator fullValidation = isCEmailValid()
+                .and(isCPhoneNumberValid())
+                .and(isCAgeInRange());
+
+        System.out.println("Valid customer:   " + fullValidation.apply(validCustomer));
+        System.out.println("Invalid customer: " + fullValidation.apply(invalidCustomer));
+
         // ===== Callback function as argument ======
         hello("John", null,
                 value -> System.out.println("No lastname provided for " + value));
@@ -158,4 +172,68 @@ public class VideoNotes {
             callback.run();
         }
     }
+
+    // ===== Combinator Pattern =====
+    // A functional approach to combining validation rules
+    // Each validator is a Function that returns a ValidationResult
+
+    // Validation result type
+    enum ValidationResult2 {
+        SUCCESS, PHONE_NUMBER_NOT_VALID, EMAIL_NOT_VALID, AGE_NOT_IN_RANGE
+    }
+
+    // Customer to validate
+    record Customer2(String name, String email, String phoneNumber, int age) {
+    }
+
+    // Functional interface for customer validation
+    @FunctionalInterface
+    interface CustomerValidator extends Function<Customer2, ValidationResult2> {
+        // Combine two validators: run this, then run other if success
+        default CustomerValidator and(CustomerValidator other) {
+            return customer -> {
+                ValidationResult2 result = this.apply(customer);
+                return result == ValidationResult2.SUCCESS
+                        ? other.apply(customer)
+                        : result;
+            };
+        }
+    }
+
+    // Individual validators defined as lambdas
+    static CustomerValidator isCEmailValid() {
+        return customer -> customer.email().contains("@")
+                ? ValidationResult2.SUCCESS
+                : ValidationResult2.EMAIL_NOT_VALID;
+    }
+
+    static CustomerValidator isCPhoneNumberValid() {
+        return customer -> customer.phoneNumber().contains("+44")
+                ? ValidationResult2.SUCCESS
+                : ValidationResult2.PHONE_NUMBER_NOT_VALID;
+    }
+
+    static CustomerValidator isCAgeInRange() {
+        return customer -> customer.age() >= 18 && customer.age() <= 100
+                ? ValidationResult2.SUCCESS
+                : ValidationResult2.AGE_NOT_IN_RANGE;
+    }
+
+    // ===== Callback Functions =====
+    // Passing behaviour (function) as a parameter
+    // This is the foundation of event-driven programming
+
+    // Without callback: rigid, does one fixed thing
+    static void processDataOldWay(List<Integer> data) {
+        // Always prints — cannot change behaviour
+        data.forEach(System.out::println);
+    }
+
+    // With callback: flexible, caller decides what to do
+    static void processData(
+            List<Integer> data,
+            Consumer<Integer> callback) {
+        data.forEach(callback);
+    }
+
 }
